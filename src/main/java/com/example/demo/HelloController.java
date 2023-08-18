@@ -91,8 +91,11 @@ public class HelloController {
 
     void startTracking(){
         for (ObservableBook b: books) {
-            changedBooksIsbns.add(String.valueOf(b.getIsbn()));
+            b.year.addListener((v,o,n) -> changedBooksIsbns.add(String.valueOf(b.getIsbn())));
+            b.title.addListener((v,o,n) -> changedBooksIsbns.add(String.valueOf(b.getIsbn())));
+
         }
+
     }
 
 }
